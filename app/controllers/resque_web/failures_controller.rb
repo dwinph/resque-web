@@ -17,7 +17,7 @@ module ResqueWeb
 
     # destroy all jobs from the failure queue
     def destroy_all
-      queue = params[:queue] || 'failed'
+      queue = params[:queue] || 'resque:failed'
       Resque::Failure.clear(queue)
       redirect_to failures_path(redirect_params)
     end
